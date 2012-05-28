@@ -15,6 +15,9 @@ class ProgramOptions{
 
       std::string print()const;
 
+      std::string get_thermal_video_filename()const;
+      void set_thermal_video_filename( std::string const& new_filename );
+
    private:
       
       std::string thermal_video_filename;

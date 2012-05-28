@@ -21,3 +21,11 @@ string ProgramOptions::print()const{
 
    return info;
 }
+      
+std::string ProgramOptions::get_thermal_video_filename()const{
+   return thermal_video_filename;
+}
+
+void ProgramOptions::set_thermal_video_filename( const string& new_filename ){
+   thermal_video_filename = new_filename;
+}
