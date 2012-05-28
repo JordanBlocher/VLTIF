@@ -10,11 +10,13 @@ int main( int argc, char* argv[] ){
     //menu selection choice
     int choice = 0;
     bool exit = false;
+    
+    //initialize data
+    ProgramOptions options = gui::load_config_data();
 
     //initialize ncurses
     gui::init_gui();
 
-    ProgramOptions options = gui::load_config_data();
 
     //iterate until choice is given
     while( exit == false ){
@@ -33,6 +35,14 @@ int main( int argc, char* argv[] ){
 
             case gui::CONFIGURATION:
                gui::configuration( options );
+               break;
+
+            case gui::PLAY_VIDEO:
+               
+               break;
+
+            case gui::ALIGN_VIDEO:
+               
                break;
 
         }

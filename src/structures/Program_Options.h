@@ -17,9 +17,15 @@ class ProgramOptions{
 
       std::string get_thermal_video_filename()const;
       void set_thermal_video_filename( std::string const& new_filename );
+      
+      std::string get_visible_video_filename()const;
+      void set_visible_video_filename( std::string const& new_filename );
+
+      int get_max()const;
 
    private:
       
+      std::string visible_video_filename;
       std::string thermal_video_filename;
       
       std::vector< std::pair< std::string, std::string> >  raw_data;
