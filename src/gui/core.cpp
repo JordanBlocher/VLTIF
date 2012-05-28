@@ -13,6 +13,7 @@ void init_gui(){
    raw();
    keypad( stdscr, TRUE );
    noecho();
+   curs_set(0);
 
    if( has_colors() == FALSE ){
       endwin();
@@ -25,6 +26,7 @@ void init_gui(){
 
 void cleanup_gui(){
 
+   curs_set(1);
    endwin();
 
 }
