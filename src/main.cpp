@@ -1,6 +1,5 @@
-#include "gui/gui.h"
 
-#include <ncurses.h>
+#include "gui/gui.h"
 
 /** 
   * Main Driver
@@ -14,6 +13,8 @@ int main( int argc, char* argv[] ){
 
     //initialize ncurses
     gui::init_gui();
+
+    ProgramOptions options = gui::load_config_data();
 
     //iterate until choice is given
     while( exit == false ){
@@ -31,6 +32,7 @@ int main( int argc, char* argv[] ){
                 break;
 
             case gui::CONFIGURATION:
+               gui::configuration( options );
                break;
 
         }
@@ -39,6 +41,8 @@ int main( int argc, char* argv[] ){
 
     //cleanup ncurses
     gui::cleanup_gui();
+
+    gui::save_config_data( options );
 
     return 0;
 }

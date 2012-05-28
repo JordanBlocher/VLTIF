@@ -7,28 +7,44 @@ OPENCV_INCLUDE = `pkg-config opencv --cflags`
 OPENCV = `pkg-config opencv --cflags --libs`
 
 OBJECTS = $(BUILD)/main.o \
-		    $(BUILD)/core.o \
-          $(BUILD)/main_menu.o \
-			 $(BUILD)/string_utilities.o
+			 $(BUILD)/core/core.o \
+			 $(BUILD)/gui/configuration.o \
+		    $(BUILD)/gui/core.o \
+          $(BUILD)/gui/main_menu.o \
+			 $(BUILD)/structures/Program_Options.o \
+			 $(BUILD)/utilities/string_utilities.o
+
+
+all: $(BIN)/VLTIF
+
 
 ######################################### 
 #          PRIMARY EXECUTABLE           #
 #########################################
-$(BIN)/VLTIF: $(OBJECTS)
+$(BIN)/VLTIF: $(OBJECTS) $(BUILD) $(BUILD)/gui $(BUILD)/utilities
 	g++ -o $@ $(OBJECTS) $(OPENCV) -lncurses
 
 
 
-$(BUILD)/main.o: src/main.cpp
+$(BUILD)/main.o: src/main.cpp $(BUILD)/gui $(BUILD)/utilities
 	g++ $< -c -o $@ $(OPENCV_INCLUDE)
 
-$(BUILD)/core.o: src/gui/core.cpp
+$(BUILD)/core/core.o: src/core/core.cpp $(BUILD)/core
 	g++ $< -c -o $@
 
-$(BUILD)/main_menu.o: src/gui/main_menu.cpp
+$(BUILD)/gui/configuration.o: src/gui/configuration.cpp $(BUILD)/gui
+	g++ $< -c -o $@
+
+$(BUILD)/gui/core.o: src/gui/core.cpp
+	g++ $< -c -o $@
+
+$(BUILD)/gui/main_menu.o: src/gui/main_menu.cpp
 	g++ $< -c -o $@ $(OPENCV_INCLUDE)
 
-$(BUILD)/string_utilities.o: src/utilities/string_utilities.cpp
+$(BUILD)/structures/Program_Options.o: src/structures/Program_Options.cpp $(BUILD)/structures
+	g++ $< -c -o $@ 
+
+$(BUILD)/utilities/string_utilities.o: src/utilities/string_utilities.cpp
 	g++ $< -c -o $@ 
 
 
@@ -38,7 +54,24 @@ check:
 	./build/unit_test
 
 clean:
-	rm -rf $(BUILD)/*.o
-	rm $(BUILD)/VLTIF
+	rm -rf $(BUILD)/*
 
+
+$(BIN):
+	@mkdir -p $(BIN)
+
+$(BUILD):
+	@mkdir -p $(BUILD)
+
+$(BUILD)/core:
+	@mkdir -p $(BUILD)/core
+
+$(BUILD)/gui:
+	@mkdir -p $(BUILD)/gui
+
+$(BUILD)/structures:
+	@mkdir -p $(BUILD)/structures
+
+$(BUILD)/utilities:
+	@mkdir -p $(BUILD)/utilities
 
