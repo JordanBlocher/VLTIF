@@ -37,14 +37,24 @@ namespace gui{
     */
     int main_menu( int argc, char * argv[] );
 
-
+   /** 
+     * Allow the user to configure the program options
+     * as shown in data/options.cfg
+     *
+     * @param[in/out] data Program Configuration Options
+   */
    void configuration( ProgramOptions& data );
 
+   /**
+     * Load configuration data
+   */
    ProgramOptions load_config_data();
 
+   /**
+     * Save configuration data
+   */
    void save_config_data( ProgramOptions const& data );
 
-   void align_video( ProgramOptions& data );
 
 }///end of gui namespace
 

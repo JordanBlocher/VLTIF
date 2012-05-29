@@ -1,4 +1,6 @@
 
+.PHONY: docs
+
 BIN = bin
 
 BUILD = build
@@ -70,6 +72,8 @@ check:
 clean:
 	rm -rf $(BUILD)/*
 
+docs:
+	doxygen
 
 $(BIN):
 	@mkdir -p $(BIN)
