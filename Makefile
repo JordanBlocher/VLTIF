@@ -34,31 +34,31 @@ $(BIN)/VLTIF: $(OBJECTS) $(BUILD) $(BUILD)/gui $(BUILD)/utilities
 
 
 
-$(BUILD)/main.o: src/main.cpp $(BUILD)/gui $(BUILD)/utilities
+$(BUILD)/main.o: src/main.cpp $(BUILD)/gui $(BUILD)/utilities $(HEADERS)
 	g++ $< -c -o $@ $(OPENCV_INCLUDE)
 
-$(BUILD)/core/core.o: src/core/core.cpp $(BUILD)/core
+$(BUILD)/core/core.o: src/core/core.cpp $(BUILD)/core $(HEADERS)
 	g++ $< -c -o $@
 
-$(BUILD)/detection/detection.o: src/detection/detection.cpp src/detection/thermal.cpp $(BUILD)/detection
+$(BUILD)/detection/detection.o: src/detection/detection.cpp $(BUILD)/detection $(HEADERS)
 	g++ $< -c -o $@ 
 
-$(BUILD)/detection/thermal.o: src/detection/thermal.cpp $(BUILD)/detection
+$(BUILD)/detection/thermal.o: src/detection/thermal.cpp $(BUILD)/detection $(HEADERS)
 	g++ $< -c -o $@
 
-$(BUILD)/gui/configuration.o: src/gui/configuration.cpp $(BUILD)/gui
+$(BUILD)/gui/configuration.o: src/gui/configuration.cpp $(BUILD)/gui $(HEADERS)
 	g++ $< -c -o $@
 
-$(BUILD)/gui/core.o: src/gui/core.cpp
+$(BUILD)/gui/core.o: src/gui/core.cpp $(HEADERS)
 	g++ $< -c -o $@
 
-$(BUILD)/gui/main_menu.o: src/gui/main_menu.cpp
+$(BUILD)/gui/main_menu.o: src/gui/main_menu.cpp $(HEADERS)
 	g++ $< -c -o $@ $(OPENCV_INCLUDE)
 
-$(BUILD)/structures/Program_Options.o: src/structures/Program_Options.cpp $(BUILD)/structures
+$(BUILD)/structures/Program_Options.o: src/structures/Program_Options.cpp $(BUILD)/structures $(HEADERS)
 	g++ $< -c -o $@ 
 
-$(BUILD)/utilities/string_utilities.o: src/utilities/string_utilities.cpp
+$(BUILD)/utilities/string_utilities.o: src/utilities/string_utilities.cpp $(HEADERS)
 	g++ $< -c -o $@ 
 
 

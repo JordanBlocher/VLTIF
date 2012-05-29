@@ -3,7 +3,7 @@
 #include <fstream>
 #include <iostream>
 
-#include "gui.h"
+#include "gui.hpp"
 
 using namespace std;
 

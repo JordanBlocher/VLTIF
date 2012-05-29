@@ -4,8 +4,8 @@
 
 #include <ncurses.h>
 
-#include "gui.h"
-#include "../utilities/string_utilities.h"
+#include "gui.hpp"
+#include "../utilities/string_utilities.hpp"
 
 using namespace std;
 
