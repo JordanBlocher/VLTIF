@@ -1,4 +1,5 @@
 
+#include "core/core.hpp"
 #include "detection/detection.hpp"
 #include "gui/gui.hpp"
 
@@ -38,8 +39,12 @@ int main( int argc, char* argv[] ){
                gui::configuration( options );
                break;
 
-            case gui::PLAY_VIDEO:
-               
+            case gui::PLAY_THERMAL_VIDEO:
+               core::play_video( options, true );
+               break;
+
+            case gui::PLAY_VISIBLE_VIDEO:
+               core::play_video( options, false );
                break;
 
             case gui::ALIGN_VIDEO:

@@ -16,8 +16,10 @@ int main_menu( int argc, char* argv[] ){
 
    int pos = 0;
    vector<pair<string,int> >  menu_pairs;
-   menu_pairs.push_back( pair<string,int>(string("Configure Options"), CONFIGURATION ));
-   menu_pairs.push_back( pair<string,int>(string("Exit Program"     ), EXIT_PROGRAM  ));
+   menu_pairs.push_back( pair<string,int>(string("Configure Options" ), CONFIGURATION ));
+   menu_pairs.push_back( pair<string,int>(string("Play Thermal Video"), PLAY_THERMAL_VIDEO));
+   menu_pairs.push_back( pair<string,int>(string("Play Visible Video"), PLAY_VISIBLE_VIDEO));
+   menu_pairs.push_back( pair<string,int>(string("Exit Program"      ), EXIT_PROGRAM  ));
 
    //start loop
    while( true ){
@@ -65,10 +67,10 @@ int main_menu( int argc, char* argv[] ){
 
       //change position if user presses arrow keys
       if( input == KEY_UP )
-         pos++;
+         pos--;
       
       if( input == KEY_DOWN )
-         pos--;
+         pos++;
 
       if( pos < 0 )
          pos = ((int)menu_pairs.size()) + pos; 
