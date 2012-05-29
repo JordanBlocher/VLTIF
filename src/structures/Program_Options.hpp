@@ -1,5 +1,5 @@
-#ifndef __SRC_STRUCTURES_PROGRAM_OPTIONS_H__
-#define __SRC_STRUCTURES_PROGRAM_OPTIONS_H__
+#ifndef __SRC_STRUCTURES_PROGRAM_OPTIONS_HPP__
+#define __SRC_STRUCTURES_PROGRAM_OPTIONS_HPP__
 
 #include <string>
 #include <utility>

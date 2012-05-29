@@ -1,7 +1,7 @@
-#ifndef __SRC_GUI_GUI_H__
-#define __SRC_GUI_GUI_H__
+#ifndef __SRC_GUI_GUI_HPP__
+#define __SRC_GUI_GUI_HPP__
 
-#include "../structures/Program_Options.h"
+#include "../structures/Program_Options.hpp"
 
 namespace gui{
 
@@ -9,7 +9,8 @@ namespace gui{
         EXIT_PROGRAM  = 0,
         CONFIGURATION = 1,
         PLAY_VIDEO    = 2,
-        ALIGN_VIDEO   = 3
+        ALIGN_VIDEO   = 3,
+        DETECTION     = 4
     };
 
     /**

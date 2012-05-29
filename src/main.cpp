@@ -1,5 +1,6 @@
 
-#include "gui/gui.h"
+#include "detection/detection.hpp"
+#include "gui/gui.hpp"
 
 /** 
   * Main Driver
@@ -43,6 +44,9 @@ int main( int argc, char* argv[] ){
 
             case gui::ALIGN_VIDEO:
                
+               break;
+            case gui::DETECTION:
+               gui::detection( options );
                break;
 
         }

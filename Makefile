@@ -8,12 +8,20 @@ OPENCV = `pkg-config opencv --cflags --libs`
 
 OBJECTS = $(BUILD)/main.o \
 			 $(BUILD)/core/core.o \
+			 $(BUILD)/detection/detection.o \
+			 $(BUILD)/detection/thermal.o \
 			 $(BUILD)/gui/configuration.o \
 		    $(BUILD)/gui/core.o \
           $(BUILD)/gui/main_menu.o \
 			 $(BUILD)/structures/Program_Options.o \
 			 $(BUILD)/utilities/string_utilities.o
 
+HEADERS = src/alignment/alignment.hpp \
+			 src/core/core.hpp \
+			 src/detection/detection.hpp \
+			 src/gui/gui.hpp \
+			 src/structures/Program_Options.hpp \
+			 src/utilities/string_utilities.hpp
 
 all: $(BIN)/VLTIF
 
@@ -30,6 +38,12 @@ $(BUILD)/main.o: src/main.cpp $(BUILD)/gui $(BUILD)/utilities
 	g++ $< -c -o $@ $(OPENCV_INCLUDE)
 
 $(BUILD)/core/core.o: src/core/core.cpp $(BUILD)/core
+	g++ $< -c -o $@
+
+$(BUILD)/detection/detection.o: src/detection/detection.cpp src/detection/thermal.cpp $(BUILD)/detection
+	g++ $< -c -o $@ 
+
+$(BUILD)/detection/thermal.o: src/detection/thermal.cpp $(BUILD)/detection
 	g++ $< -c -o $@
 
 $(BUILD)/gui/configuration.o: src/gui/configuration.cpp $(BUILD)/gui
@@ -65,6 +79,9 @@ $(BUILD):
 
 $(BUILD)/core:
 	@mkdir -p $(BUILD)/core
+
+$(BUILD)/detection:
+	@mkdir -p $(BUILD)/detection
 
 $(BUILD)/gui:
 	@mkdir -p $(BUILD)/gui
